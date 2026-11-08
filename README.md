@@ -30,3 +30,9 @@ The tree includes thousands of Python files and native/binary dependencies. This
 ## Current usage
 
 Do not treat the current `main` branch as a deployable automation application. Do not delete, archive, force-reset, or merge `master` until the migration inventory is complete.
+
+## Portfolio ownership
+
+Legacy multi-cloud automation archive. Preserve main and master until the large legacy master tree is inventoried, scanned, and any unique source is migrated.
+
+Account-wide ownership, consolidation decisions, and repository status are maintained in the [WSP portfolio repository catalog](https://github.com/zeiglerit-aiml/WSP_Integrated_AI_SDLC_GVC_pl/blob/main/REPOSITORY_CATALOG.md).

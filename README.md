@@ -1,19 +1,32 @@
-# Automagic — automation workspace
+# Automagic — legacy multi-cloud automation workspace
 
-## Repository status
+## Important branch status
 
-The current `main` branch contains no runnable application or automation source. It is a placeholder/workspace, not an installable tool or production automation service. The repository's historical Git storage may contain prior objects, but those are not part of the current tracked source tree.
+The repository has two unrelated histories:
 
-## Intended boundary
+- `main` is a new placeholder branch containing this README.
+- `master` contains the substantial legacy project tree. A GitHub comparison reports no common ancestor between `main` and `master`; this is not a simple fast-forward or safe branch rename.
 
-Use this repository only when a distinct automation product or reusable automation library is ready to be maintained here. Argo CD deployment examples and cluster lifecycle helpers belong in [argo](https://github.com/zeiglerit-aiml/argo). AI/ML application and MLOps assistant code belongs in the relevant application repositories.
+The `master` tree currently contains approximately 10,340 tracked entries, including:
 
-## Before adding code
+- `aws/` — about 8,561 entries, including a large vendored Python Lambda runtime/dependency tree
+- `observ/` — about 956 entries
+- `gcp/` — about 605 entries
+- `IAC/` — Terraform and infrastructure modules
+- `AI_ML/` — AI/ML and inference prototypes
+- `tools/` and `poc/` — utilities and proof-of-concept projects
 
-- Define one supported automation use case and its owner.
-- Add source, tests, dependency declarations, and a runnable quickstart.
-- Document required credentials and use environment/secret stores rather than committed secrets.
-- Add CI for linting, tests, dependency checks, and artifact integrity.
-- Keep deployment permissions least-privilege and make destructive actions explicit.
+The tree includes thousands of Python files and native/binary dependencies. This repository is therefore **not empty and is not a deletion/archive candidate** until its legacy branch has been inventoried.
 
-Until those items exist, do not treat this repository as a deployable artifact.
+## Safe consolidation plan
+
+1. Keep both refs intact while inventorying the `master` tree and its deployment entry points.
+2. Identify unique applications, infrastructure modules, vendored dependencies, generated packages, and obsolete experiments.
+3. Scan the legacy tree for secrets, dependency vulnerabilities, licenses, executable artifacts, and unsafe deployment/teardown behavior.
+4. Assign each unique component to its canonical repository (for example, Argo CD helpers to `argo`, shared Terraform modules to `terraform`, and AI/ML application source to the relevant application repository).
+5. Migrate only reviewed source and required history. Do not copy the vendored Python runtime wholesale unless a reproducible packaging requirement justifies it.
+6. After migration and validation, decide whether `main` should become the consolidated canonical branch and whether `master` can be retired.
+
+## Current usage
+
+Do not treat the current `main` branch as a deployable automation application. Do not delete, archive, force-reset, or merge `master` until the migration inventory is complete.
